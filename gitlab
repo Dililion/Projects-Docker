@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config:/etc/gitlab
+      - ./data:/var/opt/gitlab/gitlab-rails/shared
+    environment:
+      GITLAB_ROOT_PASSWORD: "YOUR_PASSWORD" 
+      # Дополнительно, если необходимо:
+      #  GITLAB_HOST: "yourdomain.com"
+      #  GITLAB_HTTPS: "true"
+      #  ...
+
+#Требуется выполнить mkdir config data
